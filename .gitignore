@@ -1,0 +1,21 @@
+# --- Python / Backend ---
+healnexus_backend/__pycache__/
+healnexus_backend/venv/
+healnexus_backend/env/
+healnexus_backend/.env
+healnexus_backend/*.pyc
+
+# --- React / Frontend ---
+healnexus_frontend/node_modules/
+healnexus_frontend/dist/
+healnexus_frontend/.env
+healnexus_frontend/.env.local
+
+# --- Operating System ---
+.DS_Store
+Thumbs.db
+
+# --- Application Data ---
+# We keep the folder but ignore the actual patient files for privacy
+healnexus_backend/uploads/medical_records/*
+!healnexus_backend/uploads/medical_records/.gitkeep
