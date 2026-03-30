@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000', // Your FastAPI backend URL
+    //baseURL: 'http://localhost:8000', // Your FastAPI backend URL
+    baseURL: 'https://healnexus-backend.onrender.com',
 });
 
 // Intercept every request to inject the JWT token automatically
