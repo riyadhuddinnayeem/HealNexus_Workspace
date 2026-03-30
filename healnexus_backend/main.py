@@ -28,9 +28,17 @@ os.makedirs("uploads/medical_records", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 # -----------------------------------------------------------------
 
+# --- CORS SETTINGS ---
+# This VIP list tells the backend exactly who is allowed to talk to it
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://heal-nexus-workspace.vercel.app"  # <--- YOUR VERCEL FRONTEND
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"], 
+    allow_origins=origins, 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -41,7 +49,6 @@ app.include_router(auth_routes.router, prefix="/auth", tags=["Authentication"])
 app.include_router(patient_routes.router, prefix="/patient", tags=["Patient Dashboard"])
 app.include_router(doctor_routes.router, prefix="/doctor", tags=["Doctor Dashboard"])
 app.include_router(admin_routes.router, prefix="/admin", tags=["Admin Dashboard"]) 
-
 
 @app.get("/", tags=["Health"])
 def read_root():
